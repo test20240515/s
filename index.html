@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>푸르고 팀장 제1차 모집</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #92400e;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            padding: 2rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #4f46e5;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: 500;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        .bonus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bonus-table th {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .bonus-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .bonus-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .special-highlight {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #92400e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .requirements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .req-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid #e2e8f0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .req-item:hover {
+            border-color: #4f46e5;
+            background: #4f46e5;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="40" cy="25" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="25" cy="40" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌟 푸르고 팀장 제1차 모집</h1>
+            <p class="subtitle">딱 1팀만 선발하는 특별한 기회입니다!</p>
+            <div class="badge">💎 FIRST EDITION</div>
+        </header>
+
+        <div class="content">
+            <section class="section fade-in">
+                <h2><span class="icon">💼</span>이런 일을 하게 돼요</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    고객사 직장인들이 퇴근한 이후, <strong>다음 날 아침 쾌적하고 깨끗한 환경에서 업무할 수 있도록 사무실을 관리</strong>하는 일입니다.
+                </p>
+                
+                <div class="highlight-box">
+                    <strong>📌 업무 방식</strong><br>
+                    본사 출근 → 장비 챙기기 → 현장 업무 → 퇴근 후 반납
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h3>깨끗하고 안전한 환경</h3>
+                        <p>쾌적한 사무실에서 안전하게 근무</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>체계적인 매뉴얼</h3>
+                        <p>검증된 청소 시스템과 가이드 제공</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🕐</div>
+                        <h3>19시~06시 자율근무</h3>
+                        <p>시간 조정 가능한 유연한 스케줄</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2><span class="icon">🎯</span>이런 분을 찾아요</h2>
+                
+                <div class="requirements">
+                    <div class="req-item">🚗 개인 차량 보유 (또는 회사 차량 대여 가능)</div>
+                    <div class="req-item">✅ 성실하고 책임감 있는 분</div>
+                    <div class="req-item">🌙 야간 시간대 근무 가능한 분</div>
+                </div>
+
+                <div class="special-highlight">
+                    👫 부부팀 지원 시 우선 선발!
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2><span class="icon">🛠️</span>회사에서 이렇게 지원해드려요</h2>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧽</div>
+                        <h3>모든 청소 장비</h3>
+                        <p>청소기, 도구 일체 100% 무상 제공</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧴</div>
+                        <h3>모든 소모품</h3>
+                        <p>세제, 마포, 쓰레기봉투 등 무상 지원</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3>고객사 관리</h3>
+                        <p>문의 응대 및 업무 관련 지원</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3>체계적 교육</h3>
+                        <p>1개월간 현장 동행 교육 진행</p>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid #4f46e5;">
+                    <strong>🚗 차량 관련</strong><br>
+                    • 개인 차량 있으시면: 개인 차량 사용 (유류비 본인 부담)<br>
+                    • 개인 차량 없으시면: 회사에서 지원 가능
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2><span class="icon">💰</span>수익 구조</h2>
+                
+                <div class="highlight-box">
+                    <strong>📈 기본 수입</strong><br>
+                    • 계약 건당 회사가 제공하는 금액으로 수익 결정<br>
+                    • 업계 최고 수준의 대우<br>
+                    • 성장형 수익 구조로 안정적 수익 보장
+                </div>
+
+                <h3 style="color: #4f46e5; margin: 2rem 0 1rem 0; font-size: 1.3rem;">🎁 성실근무 보너스</h3>
+                <table class="bonus-table">
+                    <thead>
+                        <tr>
+                            <th>근무 기간</th>
+                            <th>반기별 보너스</th>
+                            <th>연간 추가 수입</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1년차</strong></td>
+                            <td>50만원 × 2회</td>
+                            <td style="color: #059669; font-weight: 600;">+100만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2년차</strong></td>
+                            <td>80만원 × 2회</td>
+                            <td style="color: #059669; font-weight: 600;">+160만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3년차 이상</strong></td>
+                            <td>120만원 × 2회</td>
+                            <td style="color: #059669; font-weight: 600;">+240만원</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px; border: 1px solid #0ea5e9; margin-top: 1rem;">
+                    <strong style="color: #0369a1;">💡 추가 수익 기회</strong><br>
+                    <strong>일회성 청소:</strong> 입주청소, 대청소, 유리창청소, 매트리스청소, 왁스코팅, 상업청소<br>
+                    <em>(장비 무상 지원)</em>
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2><span class="icon">🚀</span>성장 기회</h2>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">👑</div>
+                        <h3>창립 멤버 우대</h3>
+                        <p>제1차 팀장만의 특별한 대우</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>동반 성장</h3>
+                        <p>회사 성장과 함께 발전하는 기회</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>승진 기회</h3>
+                        <p>지점장 승진 시 최우선 검토</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2><span class="icon">🛡️</span>든든한 보호 시스템</h2>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3>고객 응대</h3>
+                        <p>회사에서 모든 고객 문의 처리</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>무리한 요구 차단</h3>
+                        <p>고객 갑질 시 회사가 직접 해결</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cta-section">
+                <h2>💡 푸르고의 약속</h2>
+                <p>
+                    <strong>푸르고는 단순 확장을 위해 무분별하게 팀장을 모집하지 않습니다.</strong><br><br>
+                    저희 소속이 되시는 한 분 한 분이 안정적으로 자리잡고 성장할 수 있는 든든한 발판을 마련하는 것이 저희의 우선순위입니다.<br><br>
+                    <strong>팀장님이 성공해야 푸르고도 함께 성장할 수 있다고 믿기 때문입니다.</strong>
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <strong>진짜 함께 성장할 첫 번째 파트너를 찾고 있습니다.</strong><br>
+            관심 있으시면 언제든 연락주세요! 🤝✨
+        </footer>
+    </div>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 섹션들에 애니메이션 적용
+        document.querySelectorAll('.section').forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = `all 0.8s ease ${index * 0.1}s`;
+            observer.observe(section);
+        });
+
+        // 호버 효과 강화
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
